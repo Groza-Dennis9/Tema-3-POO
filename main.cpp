@@ -1,9 +1,16 @@
 #include <iostream>
-#include <SFML/Main.hpp>
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-using namespace std;
-int main() {
+#include "GameEngine.h"
 
+using namespace std;
+
+int main() {
+    try {
+        auto engine = make_shared<GameEngine>();
+        engine->init();
+        engine->run();
+    }
+    catch (const exception& e) {
+        cerr << "Eroare critica: " << e.what() << "\n";
+    }
     return 0;
 }

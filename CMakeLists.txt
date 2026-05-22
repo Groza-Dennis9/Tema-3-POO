@@ -10,11 +10,17 @@ add_executable(${PROJECT_NAME}
         ResourceLoadException.h
         EngineConfig.h
         EngineConfig.cpp
-        EngineConfig.cpp
         CacheManager.h
-        CacheManager.hpp
         BaseScene.h
-        BaseScene.cpp)
+        BaseScene.cpp
+        DialogueScene.h
+        DialogueScene.cpp
+        GameEngine.h
+        GameEngine.cpp
+        ChoiceScene.h
+        ChoiceScene.cpp
+        InvestigationScene.h
+        InvestigationScene.cpp)
 
 set(SFML_BASE_DIR "D:/libs/SFML-2.6.1")
 

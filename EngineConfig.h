@@ -2,6 +2,7 @@
 #define TEMA_3_POO_ENGINECONFIG_H
 
 #include <string>
+#include "CacheManager.h"
 
 using namespace std;
 

@@ -1,9 +1,12 @@
 #ifndef TEMA_3_POO_CACHEMANAGER_H
 #define TEMA_3_POO_CACHEMANAGER_H
 
+#include "ResourceLoadException.h"
 #include <map>
 #include <string>
+#include <exception>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 using namespace std;
 
@@ -17,6 +20,7 @@ public:
     size_t size() const;
 };
 
+
 template <>
 class CacheManager<string, sf::Font> {
 private:
@@ -27,6 +31,6 @@ public:
     size_t size() const;
 };
 
-//#include "CacheManager.hpp"
+#include "CacheManager.hpp"
 
 #endif //TEMA_3_POO_CACHEMANAGER_H
