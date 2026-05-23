@@ -77,7 +77,7 @@ void DialogueScene::update() {
         return;
 
     if (!script[step].bg.empty() && script[step].bg != "none") {
-        bgSprite.setTexture(texMgr.get(script[step].bg));
+        bgSprite.setTexture(texMgr.get(script[step].bg), true);
         bgSprite.setColor(sf::Color(255, 255, 255, 255));
     }
     else
@@ -85,7 +85,7 @@ void DialogueScene::update() {
 
 
     if (!script[step].character.empty() && script[step].character != "none") {
-        charSprite.setTexture(texMgr.get(script[step].character));
+        charSprite.setTexture(texMgr.get(script[step].character), true);
         charSprite.setColor(sf::Color(255, 255, 255, 255));
     }
     else
