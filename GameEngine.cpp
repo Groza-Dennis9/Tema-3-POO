@@ -29,42 +29,57 @@ void GameEngine::updateBGM(const string& path) {
 void GameEngine::goToScene(const string& id) {
     auto self = shared_from_this();
 
-    if (id == "Start") {
-        currentScene = createScene<DialogueScene>(self, vector<DialogueLine>{
-            {"Narrator", "Test for a dialogue scene.", "assets/images/4823ee026d76ff19217045121c984a27.jpg", "none", "none", "none"},
-            {"Test", "Ready for a decision?", "assets/images/4823ee026d76ff19217045121c984a27.jpg", "assets/images/1_sprite.png", "assets/sounds/rainy-footsteps.ogg", "assets/sounds/take-a-load-off.ogg"}
-        }, "Decision1", texManager, fontManager, soundManager);
-    }
+     if (id == "Start") {
+         currentScene = createScene<DialogueScene>(self, vector<DialogueLine>{
+             {"", "Just when I thought it couldn't get harder for me.", "assets/images/black_screen.jpg", "none", "none", "assets/sounds/hiroshi-yoshimura-rain-mix.ogg"},
+             {"", "No sleep. No peace. And now, rain.", "assets/images/black_screen.jpg", "none", "none", "assets/sounds/hiroshi-yoshimura-rain-mix.ogg"},
+             {"", "Next thing I need to be told is : ", "assets/images/black_screen.jpg", "none", "none", "assets/sounds/hiroshi-yoshimura-rain-mix.ogg"},
+             {"", "'Caution : No wet dogs allowed inside.'", "assets/images/black_screen.jpg", "none", "none", "assets/sounds/hiroshi-yoshimura-rain-mix.ogg"},
+             {"", "Would the pharmacist be mad I arrived this early?", "assets/images/outside.jpg", "none", "none", "assets/sounds/hiroshi-yoshimura-rain-mix.ogg"},
+             {"", "I have never seen the doors locked before ...", "assets/images/outside.jpg", "none", "none", "assets/sounds/hiroshi-yoshimura-rain-mix.ogg"},
+             {"", "... not like I have seen them open before either...", "assets/images/outside.jpg", "none", "none", "assets/sounds/hiroshi-yoshimura-rain-mix.ogg"},
+             {"???", "OH! Someone is already here.", "assets/images/outside.jpg", "none", "none", "assets/sounds/hiroshi-yoshimura-rain-mix.ogg"},
+             {"Pharmacist", "Sorry to keep you waiting. I didn't expect people so early.", "assets/images/outside.jpg", "assets/images/4_sprite.png", "none", "assets/sounds/hiroshi-yoshimura-rain-mix.ogg"},
+             {"", "I am sorry for the early arrival...", "assets/images/outside.jpg", "assets/images/3.1_sprite.png", "none", "assets/sounds/hiroshi-yoshimura-rain-mix.ogg"},
+             {"Pharmacist", "No worries.", "assets/images/outside.jpg", "assets/images/3.1_sprite.png", "none", "assets/sounds/hiroshi-yoshimura-rain-mix.ogg"},
+             {"Pharmacist", "Here. You may enter. I can't keep you in the rain.", "assets/images/outside.jpg", "assets/images/doorun_sprite.png", "assets/sounds/opening-door.mp3", "assets/sounds/hiroshi-yoshimura-rain-mix.ogg"},
+         }, "Inside", texManager, fontManager, soundManager);
+     }
+     else if (id == "Inside") {
+         currentScene = createScene<DialogueScene>(self, vector<DialogueLine>{
+             {"", "", "assets/images/black_screen.jpg", "none", "assets/sounds/close-door.mp3", "assets/sounds/nectry-antent-shelter.ogg"},
+             {"Pharmacist", "While I get everything ready at the counter, you may settle down.", "assets/images/Pharmacy_center.jpg", "assets/images/3_sprite.png", "none", "assets/sounds/nectry-antent-shelter.ogg"},
+             {"Pharmacist", "Why don't you look around for the time being?", "assets/images/Pharmacy_center.jpg", "assets/images/7_sprite.png", "none", "assets/sounds/nectry-antent-shelter.ogg"},
+             {"", "I might as well.", "assets/images/Pharmacy_center.jpg", "none", "none", "assets/sounds/nectry-antent-shelter.ogg"},
+         }, "Investigate", texManager, fontManager, soundManager);
+     }
     else
-        if (id == "Decision1") {
-        currentScene = createScene<ChoiceScene>(
-            "assets/images/4823ee026d76ff19217045121c984a27.jpg",
-            "assets/images/3_sprite.png",
-            vector<Choice>{{"Go to Invastigate.", "Investigate"}, {"Return to Start", "Start"}},
-            texManager, fontManager);
-    }
-    else if (id == "Investigate") {
+        if (id == "Investigate") {
         View center;
-        center.bg = "assets/images/c2a72d6249b578e890e9af3fb57389fe.jpg";
-        center.hotspots.push_back(sf::FloatRect(500, 300, 200, 200));
-        center.messages.push_back("New thing here!");
-        center.hotspots.push_back(sf::FloatRect(100, 100, 100, 500));
+        center.bg = "assets/images/Pharmacy_center.jpg";
+        center.hotspots.push_back(sf::FloatRect(80, 100, 230, 520));
+        center.messages.push_back("Hair care products? Are they any different than the store ones?");
+        center.hotspots.push_back(sf::FloatRect(780, 480, 125, 90));
+        center.messages.push_back("Quite a nice computer.");
+        center.hotspots.push_back(sf::FloatRect(550, 600, 600, 150));
         center.messages.push_back("");
-        center.exitIndex = 1;
+        center.exitIndex = 2;
 
         View left;
-        left.bg = "assets/images/4823ee026d76ff19217045121c984a27.jpg";
-        left.hotspots.push_back(sf::FloatRect(100, 300, 50, 100));
-        left.messages.push_back("Asset at left 1");
-        left.hotspots.push_back(sf::FloatRect(500, 100, 100, 20));
-        left.messages.push_back("Asset at left 2");
+        left.bg = "assets/images/Pharmacy_left.jpg";
+        left.hotspots.push_back(sf::FloatRect(170, 240, 430, 370));
+        left.messages.push_back("... surprise... medicine... in a pharmacy...");
+        left.hotspots.push_back(sf::FloatRect(525, 60, 190, 90));
+        left.messages.push_back("The lights seem modern. It feels cozy.");
+        left.hotspots.push_back(sf::FloatRect(890, 300, 200, 400));
+        left.messages.push_back("A backroom perhaps...?");
 
         View right;
-        right.bg = "assets/images/ecc820dbdcc6966745e3e8c1a33bf853.jpg";
-        right.hotspots.push_back(sf::FloatRect(100, 300, 50, 100));
-        right.messages.push_back("Asset at right 1");
-        right.hotspots.push_back(sf::FloatRect(500, 100, 100, 20));
-        right.messages.push_back("Asset at right 2");
+        right.bg = "assets/images/Pharmacy_right.jpg";
+        right.hotspots.push_back(sf::FloatRect(0, 500, 150, 130));
+        right.messages.push_back("Odd decore choice...");
+        right.hotspots.push_back(sf::FloatRect(690, 240, 280, 500));
+        right.messages.push_back("The sun isn't even out yet... Was it a good idea to come this early...?");
 
         currentScene = createScene<InvestigationScene>(
             self,
@@ -73,6 +88,14 @@ void GameEngine::goToScene(const string& id) {
             texManager,
             fontManager
         );
+    }
+    // else if (id == "")
+    else if (id == "Decision1") {
+        currentScene = createScene<ChoiceScene>(
+            "assets/images/4823ee026d76ff19217045121c984a27.jpg",
+            "assets/images/3_sprite.png",
+            vector<Choice>{{"Go to Invastigate.", "Investigate"}, {"Return to Start", "Start"}},
+            texManager, fontManager);
     }
 }
 
