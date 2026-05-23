@@ -47,7 +47,7 @@ void GameEngine::goToScene(const string& id) {
      }
      else if (id == "Inside") {
          currentScene = createScene<DialogueScene>(self, vector<DialogueLine>{
-             {"", "", "assets/images/Pharmacy_center.jpg", "none", "assets/sounds/close-door.mp3", "assets/sounds/nectry-antent-shelter.ogg"},
+             {"", "", "assets/images/Pharmacy_center.jpg", "none", "assets/sounds/close-door.mp3", "assets/sounds/nectry-antent-shelter.ogg", false},
              {"Pharmacist", "While I get everything ready at the counter, you may settle down.", "assets/images/Pharmacy_center.jpg", "assets/images/3_sprite.png", "none", "assets/sounds/nectry-antent-shelter.ogg"},
              {"Pharmacist", "Why don't you look around for the time being?", "assets/images/Pharmacy_center.jpg", "assets/images/7_sprite.png", "none", "assets/sounds/nectry-antent-shelter.ogg"},
              {"", "I might as well.", "assets/images/Pharmacy_center.jpg", "none", "none", "assets/sounds/nectry-antent-shelter.ogg"},
@@ -117,7 +117,7 @@ void GameEngine::goToScene(const string& id) {
             {"Pharmacist", "And for it to say something completely different.", "assets/images/Pharmacy_desk.jpg", "assets/images/15_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
             {"", "Yeah... funny... ha...", "assets/images/Pharmacy_desk.jpg", "assets/images/10_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
             {"", "... the jokes must have come with the specialization... I assume...", "assets/images/Pharmacy_desk.jpg", "none", "none", "assets/sounds/yearning-for-trees.ogg"},
-            {"", "", "assets/images/Pharmacy_desk.jpg", "none", "assets/sounds/sound-effects-footsteps.ogg", "assets/sounds/yearning-for-trees.ogg"},
+            {"", "", "assets/images/Pharmacy_desk.jpg", "none", "assets/sounds/sound-effects-footsteps.ogg", "assets/sounds/yearning-for-trees.ogg", false},
             {"Pharmacist", "Here... is the prescription.", "assets/images/Pharmacy_desk.jpg", "assets/images/doorun_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
             {"Pharmacist", "It isn't that light.", "assets/images/Pharmacy_desk.jpg", "assets/images/10_sprite.png", "assets/sounds/paper-rustle.mp3", "assets/sounds/yearning-for-trees.ogg"},
             {"Pharmacist", "However, there is nothing to worry about.", "assets/images/Pharmacy_desk.jpg", "assets/images/3.1_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
@@ -137,7 +137,7 @@ void GameEngine::goToScene(const string& id) {
             {"", "I wouldn't be able to handle that.", "assets/images/Pharmacy_desk.jpg", "assets/images/11_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
             {"Pharmacist", "It's certainly a skill.", "assets/images/Pharmacy_desk.jpg", "assets/images/12_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
             {"Pharmacist", "Now... the medicine... I will be back shortly...", "assets/images/Pharmacy_desk.jpg", "assets/images/doorun_aprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
-            {"", "", "assets/images/Pharmacy_desk.jpg", "none", "assets/sounds/sound-effects-footsteps.ogg", "assets/sounds/yearning-for-trees.ogg"},
+            {"", "", "assets/images/Pharmacy_desk.jpg", "none", "assets/sounds/sound-effects-footsteps.ogg", "assets/sounds/yearning-for-trees.ogg", false},
             {"Pharmacist", "Here... is the prescription.", "assets/images/Pharmacy_desk.jpg", "assets/images/doorun_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
             {"Pharmacist", "The medication is quite strong, so please respect the instructions closely.", "assets/images/Pharmacy_desk.jpg", "assets/images/3.1_sprite.png", "assets/sounds/paper-rustle.mp3", "assets/sounds/yearning-for-trees.ogg"},
             {"", "Thank you... miss...", "assets/images/Pharmacy_desk.jpg", "assets/images/9_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},

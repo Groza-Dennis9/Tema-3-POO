@@ -13,6 +13,7 @@ class GameEngine;
 
 struct DialogueLine {
     string name, text, bg, character, voiceClip, bgMusic;
+    bool showChatbox = true;
 };
 
 class DialogueScene : public BaseScene {
@@ -32,6 +33,7 @@ private:
     CacheManager<string, sf::SoundBuffer>& soundMgr;
 
     void playSound(const string& path);
+    void showDialogue();
 
 public:
     DialogueScene(const shared_ptr<GameEngine>& engine, vector<DialogueLine> data, const string& next,

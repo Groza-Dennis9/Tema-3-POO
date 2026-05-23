@@ -39,6 +39,24 @@ void DialogueScene::playSound(const string& path) {
     }
 }
 
+void DialogueScene::showDialogue() {
+    if (script[step].showChatbox) {
+        textBoxBackground.setFillColor(sf::Color(20, 20, 20, 220));
+        textBoxBackground.setOutlineColor(sf::Color(255, 255, 255, 180));
+
+        nameText.setString(script[step].name);
+        bodyText.setString(script[step].text);
+    }
+    else {
+        textBoxBackground.setFillColor(sf::Color::Transparent);
+        textBoxBackground.setOutlineColor(sf::Color::Transparent);
+
+        nameText.setString("");
+        bodyText.setString("");
+    }
+}
+
+
 void DialogueScene::handleInput(sf::Vector2f mousePos, bool clicked) {
     if (!clicked) {
         return;
@@ -55,7 +73,8 @@ void DialogueScene::handleInput(sf::Vector2f mousePos, bool clicked) {
 }
 
 void DialogueScene::update() {
-    if (script.empty()) return;
+    if (script.empty())
+        return;
 
     if (!script[step].bg.empty() && script[step].bg != "none") {
         bgSprite.setTexture(texMgr.get(script[step].bg));
@@ -64,6 +83,7 @@ void DialogueScene::update() {
     else
         bgSprite.setColor(sf::Color::Black);
 
+
     if (!script[step].character.empty() && script[step].character != "none") {
         charSprite.setTexture(texMgr.get(script[step].character));
         charSprite.setColor(sf::Color(255, 255, 255, 255));
@@ -71,8 +91,7 @@ void DialogueScene::update() {
     else
         charSprite.setColor(sf::Color(255, 255, 255, 0));
 
-    nameText.setString(script[step].name);
-    bodyText.setString(script[step].text);
+    showDialogue();
 }
 
 void DialogueScene::render(sf::RenderWindow& window) {
