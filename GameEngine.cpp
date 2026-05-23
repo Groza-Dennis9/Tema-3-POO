@@ -47,7 +47,7 @@ void GameEngine::goToScene(const string& id) {
      }
      else if (id == "Inside") {
          currentScene = createScene<DialogueScene>(self, vector<DialogueLine>{
-             {"", "", "assets/images/black_screen.jpg", "none", "assets/sounds/close-door.mp3", "assets/sounds/nectry-antent-shelter.ogg"},
+             {"", "", "assets/images/Pharmacy_center.jpg", "none", "assets/sounds/close-door.mp3", "assets/sounds/nectry-antent-shelter.ogg"},
              {"Pharmacist", "While I get everything ready at the counter, you may settle down.", "assets/images/Pharmacy_center.jpg", "assets/images/3_sprite.png", "none", "assets/sounds/nectry-antent-shelter.ogg"},
              {"Pharmacist", "Why don't you look around for the time being?", "assets/images/Pharmacy_center.jpg", "assets/images/7_sprite.png", "none", "assets/sounds/nectry-antent-shelter.ogg"},
              {"", "I might as well.", "assets/images/Pharmacy_center.jpg", "none", "none", "assets/sounds/nectry-antent-shelter.ogg"},
@@ -84,18 +84,74 @@ void GameEngine::goToScene(const string& id) {
         currentScene = createScene<InvestigationScene>(
             self,
             vector<View>{left, center, right},
-            "Start",
+            "Counter",
             texManager,
             fontManager
         );
     }
-    // else if (id == "")
-    else if (id == "Decision1") {
+    else if (id == "Counter") {
+        currentScene = createScene<DialogueScene>(self, vector<DialogueLine>{
+            {"Pharmacist", "Coming here from a prescription?", "assets/images/Pharmacy_desk.jpg", "assets/images/11_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "Or, mayhaps, just your senses acting up?", "assets/images/Pharmacy_desk.jpg", "assets/images/12_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"", "Both.", "assets/images/Pharmacy_desk.jpg", "assets/images/9_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"", "I was told to come and get this medicine if I keep having insomnia. It just so happen to be today.", "assets/images/Pharmacy_desk.jpg", "assets/images/10_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "That... is a rather unusual thing to recommend...", "assets/images/Pharmacy_desk.jpg", "assets/images/10_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "It is still better than just sending you home emptyhanded.", "assets/images/Pharmacy_desk.jpg", "assets/images/5_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "I will get the medicine right up!", "assets/images/Pharmacy_desk.jpg", "assets/images/8_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"}
+         }, "Decision", texManager, fontManager, soundManager);
+    }
+    else if (id == "Decision") {
         currentScene = createScene<ChoiceScene>(
-            "assets/images/4823ee026d76ff19217045121c984a27.jpg",
-            "assets/images/3_sprite.png",
-            vector<Choice>{{"Go to Invastigate.", "Investigate"}, {"Return to Start", "Start"}},
+            "assets/images/Pharmacy_desk.jpg",
+            "assets/images/8_sprite.png",
+            vector<Choice>{{"You can read that?", "PathA"}, {"Is it usually this quiet here?", "PathB"}},
             texManager, fontManager);
+    }
+    else if (id == "PathA") {
+        currentScene = createScene<DialogueScene>(self, vector<DialogueLine>{
+            {"Pharmacist", "It certainly took a while to learn it.", "assets/images/Pharmacy_desk.jpg", "assets/images/3_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "But yes.", "assets/images/Pharmacy_desk.jpg", "assets/images/5_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "That is what 7 years of medical school gets you.", "assets/images/Pharmacy_desk.jpg", "assets/images/2_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"", "Like a cipher?", "assets/images/Pharmacy_desk.jpg", "assets/images/13_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "Akin to that. It is somewhat funny seeing patience trying to read the prescription.", "assets/images/Pharmacy_desk.jpg", "assets/images/14_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "And for it to say something completely different.", "assets/images/Pharmacy_desk.jpg", "assets/images/15_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"", "Yeah... funny... ha...", "assets/images/Pharmacy_desk.jpg", "assets/images/10_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"", "... the jokes must have come with the specialization... I assume...", "assets/images/Pharmacy_desk.jpg", "none", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"", "", "assets/images/Pharmacy_desk.jpg", "none", "assets/sounds/sound-effects-footsteps.ogg", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "Here... is the prescription.", "assets/images/Pharmacy_desk.jpg", "assets/images/doorun_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "It isn't that light.", "assets/images/Pharmacy_desk.jpg", "assets/images/10_sprite.png", "assets/sounds/paper-rustle.mp3", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "However, there is nothing to worry about.", "assets/images/Pharmacy_desk.jpg", "assets/images/3.1_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"", "Thank you... miss...", "assets/images/Pharmacy_desk.jpg", "assets/images/9_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Sienna", "Sienna...", "assets/images/Pharmacy_desk.jpg", "assets/images/12_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"", "Miss Sienna...", "assets/images/Pharmacy_desk.jpg", "assets/images/11_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Sienna", "Please come again!", "assets/images/Pharmacy_desk.jpg", "assets/images/15_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+        }, "End", texManager, fontManager, soundManager);
+    }
+    else if (id == "PathB") {
+        currentScene = createScene<DialogueScene>(self, vector<DialogueLine>{
+            {"Pharmacist", "Hmm?", "assets/images/Pharmacy_desk.jpg", "assets/images/2_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"", "If it is usually quiet as it is now. I assume many don't come here.", "assets/images/Pharmacy_desk.jpg", "assets/images/16_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "Quite the contrary. This silence is unusual.", "assets/images/Pharmacy_desk.jpg", "assets/images/10_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "I don't like noises too much, but it is up to the patient.", "assets/images/Pharmacy_desk.jpg", "assets/images/10_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "They come here to get treatment, not to have a lecture.", "assets/images/Pharmacy_desk.jpg", "assets/images/13_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"", "I wouldn't be able to handle that.", "assets/images/Pharmacy_desk.jpg", "assets/images/11_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "It's certainly a skill.", "assets/images/Pharmacy_desk.jpg", "assets/images/12_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "Now... the medicine... I will be back shortly...", "assets/images/Pharmacy_desk.jpg", "assets/images/doorun_aprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"", "", "assets/images/Pharmacy_desk.jpg", "none", "assets/sounds/sound-effects-footsteps.ogg", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "Here... is the prescription.", "assets/images/Pharmacy_desk.jpg", "assets/images/doorun_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Pharmacist", "The medication is quite strong, so please respect the instructions closely.", "assets/images/Pharmacy_desk.jpg", "assets/images/3.1_sprite.png", "assets/sounds/paper-rustle.mp3", "assets/sounds/yearning-for-trees.ogg"},
+            {"", "Thank you... miss...", "assets/images/Pharmacy_desk.jpg", "assets/images/9_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Sienna", "Just Sienna.", "assets/images/Pharmacy_desk.jpg", "assets/images/12_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"", "Thank you, Sienna,", "assets/images/Pharmacy_desk.jpg", "assets/images/11_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Sienna", "I should thank you for the chit-chat.", "assets/images/Pharmacy_desk.jpg", "assets/images/4_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Sienna", "It was pleasant.", "assets/images/Pharmacy_desk.jpg", "assets/images/8_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+            {"Sienna", "Please come again!", "assets/images/Pharmacy_desk.jpg", "assets/images/15_sprite.png", "none", "assets/sounds/yearning-for-trees.ogg"},
+        }, "End", texManager, fontManager, soundManager);
+    }
+    else if (id == "End") {
+        currentScene = createScene<DialogueScene>(self, vector<DialogueLine>{
+            {"", "End of concept demo. Thank you for playing!", "assets/images/black_screen.jpg", "none", "none", "assets/sounds/take-a-load-off.ogg"}
+        }, "", texManager, fontManager, soundManager);
     }
 }
 

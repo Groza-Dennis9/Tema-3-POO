@@ -19,17 +19,17 @@ InvestigationScene::InvestigationScene(const shared_ptr<GameEngine>& engine, vec
     promptOverlay.setSize(sf::Vector2f(1280, 720));
     promptOverlay.setFillColor(sf::Color(0, 0, 0, 180));
     promptText.setFont(fontMgr.get("arial.ttf"));
-    promptText.setString("Vrei sa parasesti zona de investigatie?");
+    promptText.setString("Do you wish to get the medication?");
     promptText.setPosition(430, 250);
 
     yesBtn.setSize(sf::Vector2f(150, 60)); yesBtn.setFillColor(sf::Color(40, 140, 40));
     yesBtn.setPosition(450, 350);
-    yesText.setFont(fontMgr.get("arial.ttf")); yesText.setString("DA");
+    yesText.setFont(fontMgr.get("arial.ttf")); yesText.setString("Yes");
     yesText.setPosition(505, 362);
 
     noBtn.setSize(sf::Vector2f(150, 60)); noBtn.setFillColor(sf::Color(140, 40, 40));
-    noBtn.setPosition(680, 350);
-    noText.setFont(fontMgr.get("arial.ttf")); noText.setString("NU");
+    noBtn.setPosition(720, 350);
+    noText.setFont(fontMgr.get("arial.ttf")); noText.setString("Not now");
     noText.setPosition(740, 362);
 }
 
