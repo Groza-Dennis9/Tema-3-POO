@@ -34,10 +34,9 @@ private:
     bool isPrompting = false;
     sf::RectangleShape yesBtn, noBtn, promptOverlay;
     sf::Text yesText, noText, promptText;
+    // bool debugMode = true;
 
 public:
-    bool debugMode = true;
-
     InvestigationScene(const shared_ptr<GameEngine>& engine, vector<View> vData, const string& next,
                        CacheManager<string, sf::Texture>& tm, CacheManager<string, sf::Font>& fm);
 

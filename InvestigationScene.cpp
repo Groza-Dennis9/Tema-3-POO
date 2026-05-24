@@ -43,16 +43,17 @@ void InvestigationScene::handleInput(sf::Vector2f mousePos, bool clicked) {
             isPrompting = false;
         return;
     }
+
     auto& v = views[currentView];
-        for (int i = 0; i < static_cast<int>(v.hotspots.size()); i++) {
-            if (v.hotspots[i].contains(mousePos)) {
-                if (i == v.exitIndex)
-                    isPrompting = true;
-                else
-                    uiMsg.setString(v.messages[i]);
-                return;
-            }
+    for (int i = 0; i < static_cast<int>(v.hotspots.size()); i++) {
+        if (v.hotspots[i].contains(mousePos)) {
+            if (i == v.exitIndex)
+                isPrompting = true;
+            else
+                uiMsg.setString(v.messages[i]);
+            return;
         }
+    }
 
     if (mousePos.x < 150 && currentView > 0) {
         currentView--;
@@ -65,6 +66,8 @@ void InvestigationScene::handleInput(sf::Vector2f mousePos, bool clicked) {
         uiMsg.setString("");
         return;
     }
+
+    uiMsg.setString("");
 }
 
 void InvestigationScene::update() {
@@ -79,16 +82,22 @@ void InvestigationScene::render(sf::RenderWindow& window) {
         window.draw(uiMsg);
     }
 
-    if (debugMode) {
-        for (const auto& rect : views[currentView].hotspots) {
-            sf::RectangleShape debugRect;
-            debugRect.setPosition(rect.left, rect.top);
-            debugRect.setSize(sf::Vector2f(rect.width, rect.height));
-            debugRect.setFillColor(sf::Color(255, 0, 0, 80));
-            debugRect.setOutlineColor(sf::Color::Red);
-            debugRect.setOutlineThickness(1.5f);
-            window.draw(debugRect);
-        }
+    // if (debugMode) {
+    //     for (const auto& rect : views[currentView].hotspots) {
+    //         sf::RectangleShape debugRect;
+    //         debugRect.setPosition(rect.left, rect.top);
+    //         debugRect.setSize(sf::Vector2f(rect.width, rect.height));
+    //
+    //         debugRect.setFillColor(sf::Color(255, 0, 0, 80));
+    //         debugRect.setOutlineColor(sf::Color::Red);
+    //         debugRect.setOutlineThickness(1.5f);
+    //         window.draw(debugRect);
+    //     }
+    // }
+
+    if (!uiMsg.getString().isEmpty()) {
+        window.draw(uiBackground);
+        window.draw(uiMsg);
     }
 
     if (isPrompting) {

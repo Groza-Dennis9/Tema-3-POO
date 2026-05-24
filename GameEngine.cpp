@@ -28,7 +28,6 @@ void GameEngine::updateBGM(const string& path) {
 
 void GameEngine::goToScene(const string& id) {
     auto self = shared_from_this();
-
      if (id == "Start") {
          currentScene = createScene<DialogueScene>(self, vector<DialogueLine>{
              {"", "Just when I thought it couldn't get harder for me.", "assets/images/black_screen.jpg", "none", "none", "assets/sounds/hiroshi-yoshimura-rain-mix.ogg"},
@@ -77,7 +76,7 @@ void GameEngine::goToScene(const string& id) {
         View right;
         right.bg = "assets/images/Pharmacy_right.jpg";
         right.hotspots.push_back(sf::FloatRect(0, 500, 150, 130));
-        right.messages.push_back("Odd decore choice...");
+        right.messages.push_back("Odd decor choice...");
         right.hotspots.push_back(sf::FloatRect(690, 240, 280, 500));
         right.messages.push_back("The sun isn't even out yet... Was it a good idea to come this early...?");
 

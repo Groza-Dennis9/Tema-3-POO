@@ -1,12 +1,9 @@
 #ifndef TEMA_3_POO_CACHEMANAGER_H
 #define TEMA_3_POO_CACHEMANAGER_H
 
-#include "ResourceLoadException.h"
 #include <map>
 #include <string>
-#include <exception>
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
 
 using namespace std;
 
@@ -24,7 +21,7 @@ public:
 template <>
 class CacheManager<string, sf::Font> {
 private:
-    std::map<string, sf::Font> cache;
+    map<string, sf::Font> cache;
 public:
     CacheManager() = default;
     sf::Font& get(const string& key);
