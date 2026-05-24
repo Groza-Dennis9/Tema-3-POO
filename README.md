@@ -1,6 +1,6 @@
 # Tema-3-POO
 Summary:
-A (very) short concept for a Visual Novel that implements POO concepts and uses the SFML library.
+A (very) short concept for a Visual Novel that implements POO elements and uses the SFML library.
 
 Attention! During the investigation scene, you have to click on the sides of the screen to move between shots. To progress, to the next part of the game you must click the desk. 
 
